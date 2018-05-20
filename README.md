@@ -2,6 +2,7 @@
 Simple simulator of tour operator with using OOP Python.
 
 Documentation for using TourOperator simulator.
+
 ===
 ## Класс Workers() из модуля Workers
 Методы:
