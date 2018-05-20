@@ -3,7 +3,7 @@ Simple simulator of tour operator with using OOP Python.
 
 Documentation for using TourOperator simulator.
 
-# Условие:
+# Условие
 
 Создать программу, которая будет симулировать работу туроператора.
 
@@ -14,7 +14,7 @@ Documentation for using TourOperator simulator.
 Я, как клиент, могу зарегистрироваться (т.е. создать объект имени меня) и "купить" тур
 
 
-# Примечание:
+# Примечание
 
 1. В задаче рассмотрены только клиенты без детей и жены/мужа
 
@@ -28,7 +28,7 @@ Documentation for using TourOperator simulator.
 
 Методы:
 
-1. AddWorker(FirstName, LastName, Sex, Position, Department) - добавление нового работника с указанными данными в журнал self.Log
+`1. AddWorker(FirstName, LastName, Sex, Position, Department)` - добавление нового работника с указанными данными в журнал self.Log
 
 2. AddWorkers(*lsts) - добавление нескольких работников. В качестве аргументов передаются списки содержащие необходимые данные в порядке ввода аргументов метода AddWorker(FirstName, LastName, Sex, Position, Department)
 
