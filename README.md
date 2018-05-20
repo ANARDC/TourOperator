@@ -24,7 +24,6 @@ Documentation for using TourOperator simulator.
 1. addDeal(self, FirstName, LastName, Passport, Email, PhoneNumber, HostCountry, HostCity, Class) - добавление заказа тура в журнал self.Log. Выводит предупреждение если такого клиента не зарегистрировано
 2. ViewLog - просмотр данных журнала в удобном для чтения формате
 
-
 Модуль main 
 Создание объектов основных классов и работа с ними 
 В качестве примера работы с симулятором использованы основные методы классов Workers(), Clients(), Deals()
