@@ -28,9 +28,9 @@ Documentation for using TourOperator simulator.
 
 Методы:
 
-`1. AddWorker(FirstName, LastName, Sex, Position, Department)` - добавление нового работника с указанными данными в журнал self.Log
+1. `**AddWorker(FirstName, LastName, Sex, Position, Department)**` - добавление нового работника с указанными данными в журнал self.Log
 
-2. AddWorkers(*lsts) - добавление нескольких работников. В качестве аргументов передаются списки содержащие необходимые данные в порядке ввода аргументов метода AddWorker(FirstName, LastName, Sex, Position, Department)
+2. **AddWorkers(*lsts)** - добавление нескольких работников. В качестве аргументов передаются списки содержащие необходимые данные в порядке ввода аргументов метода AddWorker(FirstName, LastName, Sex, Position, Department)
 
 3. DelWorker(FirstName, LastName, Sex, Position, Department) - удаление работника с указанными данными из журнала self.Log. Выводит предупреждение если журнал пуст или такого сотрудника не зарегистрировано
 
@@ -64,3 +64,7 @@ Documentation for using TourOperator simulator.
 Создание объектов основных классов и работа с ними
 
 В качестве примера работы с симулятором использованы основные методы классов Workers(), Clients(), Deals()
+
+```html
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+```
