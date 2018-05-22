@@ -10,8 +10,10 @@ if __name__ == '__main__':
                ['Harry', 'Potter', 'Male', 'Manager', 'Management'],
                ['Mary', 'Jane', 'Female', 'Operator', 'Call Center'],
                ['Barry', 'Allen', 'Male', 'Operator', 'Call Center']]
+    
     for i in workers:
         wrks.AddWorker(*i)
+    
     wrks.DelWorker('John', 'Snow', 'Male', 'Operator', 'Call Center')
     wrks.ViewLog
 
