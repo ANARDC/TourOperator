@@ -1,6 +1,7 @@
 from Workers import Workers
 from Clients import Clients
 from random import randint
+import json
 
 
 class _WorkersInfo(Workers):
@@ -20,9 +21,6 @@ class _ClientsInfo(Clients):
 
 
 class Deals(_WorkersInfo, _ClientsInfo):
-    def __init__(self):
-        self.Log = []
-
     def addDeal(self, FirstName, LastName, Passport, Email, PhoneNumber, HostCountry, HostCity, Class):
         try:
             data = _WorkersInfo().getLogWorkers()
@@ -41,11 +39,11 @@ class Deals(_WorkersInfo, _ClientsInfo):
             constFirstClass, constBusinessClass, constEconomyClass = 70, 45, 20
             coefficient = 44.9
 
-            if Class == 'First Class':
+            if Class == 'First Class' or Class == 'First-Class':
                 price = coefficient * constFirstClass
-            elif Class == 'Business Class':
+            elif Class == 'Business Class' or Class == 'Business-Class':
                 price = coefficient * constBusinessClass
-            elif Class == 'Economy Class':
+            elif Class == 'Economy Class' or Class == 'Economy-Class':
                 price = coefficient * constEconomyClass
             lstClient.append(price)
 
@@ -59,20 +57,31 @@ class Deals(_WorkersInfo, _ClientsInfo):
                 else:
                     print('''Напишите еще раз свой выбор - "\033[1mДа\033[0m" или "\033[1mНет\033[0m"?''')
                     result()
-
             result()
 
-            for i in self.Log:
-                if lstWorker == i[0]:
-                    ind = self.Log.index(i)
-                    break
-            else:
-                ind = -1
-
-            if ind >= 0:
-                self.Log[ind].append(lstClient)
-            elif ind == -1:
-                self.Log.append([lstWorker, lstClient])
+            try:
+                with open('TourOperator[Deals].json', 'r') as file:
+                    data = json.loads(file.read())
+                    for i in data:
+                        if lstWorker == i[0]:
+                            ind = data.index(i)
+                            break
+                    else:
+                        ind = -1
+            except FileNotFoundError:
+                with open('TourOperator[Deals].json', 'w') as file:
+                    data = []
+                    json.dump(data, file)
+                    ind = -1
+            with open('TourOperator[Deals].json', 'r') as file1:
+                data = json.loads(file1.read())
+                with open('TourOperator[Deals].json', 'w') as file2:
+                    if ind >= 0:
+                        data[ind].append(lstClient)
+                    elif ind == -1:
+                        data.append([lstWorker, lstClient])
+                    json.dump(data, file2)
+                    print('Сделка была успешно добавлена в журнал.')
         except AssertionError as err:
             print(err)
 
@@ -82,9 +91,11 @@ class Deals(_WorkersInfo, _ClientsInfo):
         gaps = 160
         print('∧' * gaps, '\n', '{:>115}'.format('\033[1mLOG OF DEALS'), '\n')
         print('{0:60} {1:120} {2:10} {3:10}\033[0m'.format(*lstHeads))
-        for data in self.Log:
-            print('{0:60} {1:120} {2:10} {3:10}'.format(str(data[0]), str(data[1][:-2]), str(data[1][-2]) + "$", data[1][-1]))
-            if len(data) > 2:
-                for i in data[2:]:
-                    print('{0:>178} {1:>10} {2:>10}'.format(str(i[:-2]), str(i[-2]) + "$", i[-1]))
-        print('∨' * gaps)
+        with open('TourOperator[Deals].json', 'r') as file:
+            data = json.loads(file.read())
+            for info in data:
+                print('{0:60} {1:120} {2:10} {3:10}'.format(str(info[0]), str(info[1][:-2]), str(info[1][-2]) + "$", info[1][-1]))
+                if len(info) > 2:
+                    for i in info[2:]:
+                        print('{0:>178} {1:>10} {2:>10}'.format(str(i[:-2]), str(i[-2]) + "$", i[-1]))
+            print('∨' * gaps)
