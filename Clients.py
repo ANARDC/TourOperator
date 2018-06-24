@@ -44,8 +44,8 @@ class Clients:
                                     'EMails': [EMail],
                                     'PhoneNumbers': [PhoneNumber],
                                     'HostContries': [HostCountry],
-                                    'HostCities': HostCity,
-                                    'Classes': Class})
+                                    'HostCities': [HostCity],
+                                    'Classes': [Class]})
                 json.dump(data, file)
             print('Клиент с такими данными был(-ла) успешно добавлен(-на) в журнал.')
 
